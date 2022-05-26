@@ -4,14 +4,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-        Scanner in = new Scanner(System.in);
-        var vector = in.next();
-
-        BigInteger bit_size;
-        bit_size = new BigInteger(vector);
+        BigInteger bit_size = ReadNum();
         var logarithm = Math.log(bit_size.intValue()) / Math.log(2);
-        if (logarithm == Math.round(logarithm)) {
+        if (logarithm == Math.round(logarithm) && (logarithm > 2) && (logarithm < 13)) {
             System.out.println(Pow(BigInteger.TWO, bit_size));
             BigInteger rand = GenerateRandomNum(bit_size.intValue());
             System.out.println(rand);
@@ -19,6 +14,12 @@ public class Main {
         } else {
             System.out.println("Incorrect input");
         }
+    }
+
+    public static BigInteger ReadNum() {
+        Scanner input = new Scanner(System.in);
+        var vector = input.next();
+        return new BigInteger(vector);
     }
 
     public static BigInteger GenerateRandomNum(int size) {
